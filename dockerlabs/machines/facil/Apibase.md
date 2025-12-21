@@ -3,6 +3,7 @@
 - OS: Linux
 
 ![](https://github.com/0d1n-oss/Writeups/dockerlabs/assets/apibase/banner.png)
+![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/apibase/banner.png)
 
 ## Reconocimiento
 
