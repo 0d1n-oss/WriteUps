@@ -35,10 +35,10 @@ Con esta info, y el mensaje de error se pudo proceder con un ataque de fuerza br
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/mybb/6-2.png)
 Con estos resultados solo queda probar cual es el correcto para lograr acceder al panel de administracion.
 
-**nota**
-**El sistema se cierra al fallar 5 veces (y ya se gasto una de esas al probar una peticion erronea)**
-**En caso de fallar los 5 intentos habria que reiniciar la maquina desde cero (desde el script de dockerlabs)**
-**No funciona atacar desde otro contenedor o reiniciar el contenedor con un "docker restart" **
+*nota*
+*El sistema se cierra al fallar 5 veces (y ya se gasto una de esas al probar una peticion erronea)*
+*En caso de fallar los 5 intentos habria que reiniciar la maquina desde cero (desde el script de dockerlabs)*
+*No funciona atacar desde otro contenedor o reiniciar el contenedor con un "docker restart"*
 
 Intuyendo la clave se logro identificar la correcta (la maquina se llama MyBB, usa el servicio mybb y una de las opciones es babygirl...solo sentido comun) que era babygirl.
 Logrando acceder al panel de administracion como un usuario con privilegios.
