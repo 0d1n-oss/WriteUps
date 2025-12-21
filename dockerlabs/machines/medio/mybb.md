@@ -46,8 +46,11 @@ Logrando acceder al panel de administracion como un usuario con privilegios.
 
 Dentro de este sistema se puede apreciar la version de los servicios que se estan ejecutando.
 Con esta informacion se busco alguna vulnerabilidad conocida, encontrando la vulnerabilidad CVE-2023-41362.
-**nota explicativa**
-**La vulnerabilidad consiste en command injection, mybb permite crear plantillas que seran usadas en el foro, para evitar que estas contengan codigo malicioso el sistema usa "filtros con expresiones regulares" o "regex" para buscar patrones peligrosos.**
-**En este caso se pudo introducir una entrada creada para atascar a la regex y que aborte antes de detectar el codigo malicioso. **
+
+****nota explicativa****
+****La vulnerabilidad consiste en command injection, mybb permite crear plantillas que seran usadas en el foro, para evitar que estas contengan codigo malicioso el sistema usa "filtros con expresiones regulares" o "regex" para buscar patrones peligrosos.****
+
+****En este caso se pudo introducir una entrada creada para atascar a la regex y que aborte antes de detectar el codigo malicioso. ****
 **Logrando usar la herramienta**
+
 Y logrando encontrar un script en github que logra un command injection siempre y cuando se tengan el usuario y clave de administracion.
