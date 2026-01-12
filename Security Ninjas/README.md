@@ -9,7 +9,7 @@ El laboratorio se ejecuta como una **aplicación web vulnerable local** (o en re
 
 1. Descargar la imagen Docker de Security Ninjas:
 
-   ```bash
+```bash
    docker run -d -p 8899:80 opendns/security-ninjas
 ````
 
@@ -23,7 +23,7 @@ Este entorno es útil para **práctica de pentesting / hacking ético** o para a
 
 ### Reto 1 — Command Injection
 
-<1>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/1.png
 
 La aplicación presenta un input que no valida ni sanitiza correctamente los datos ingresados, los cuales son concatenados directamente en una llamada al sistema, permitiendo inyectar operadores de shell (`|`, `;`, `&&`).
 
@@ -31,25 +31,25 @@ La aplicación presenta un input que no valida ni sanitiza correctamente los dat
 google.com | ip a
 ```
 
-<1-2>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/1-2.png
 
 ---
 
 ### Reto 2 — Broken Authentication
 
-<2>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/2.png
 
 La cookie de sesión contiene información del usuario y no está protegida ni validada correctamente del lado del servidor.
 
-<2-3>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/2-3.png
 
 Tras obtener una cookie válida (`user1`), se puede clonar y modificar para crear otra (`user2`).
 
-<2-4>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/2-4.png
 
 Usando Burp Suite se intercepta la petición y se reemplaza la cookie para acceder a los recursos de otro usuario.
 
-<2-5>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/2-5.png
 
 **Nota:** Es importante usar la petición a `user_details.php`, ya que otras rutas requieren credenciales válidas.
 
@@ -57,37 +57,37 @@ Usando Burp Suite se intercepta la petición y se reemplaza la cookie para acced
 
 ### Reto 3 — Cross-Site Scripting (XSS)
 
-<3>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/3.png
 
 #### Reflected
 
-<3-1-1>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/3-1-1.png
 
 ```html
 <script>window.location.href="/unlucky.php";</script>
 ```
 
-<3-1-2>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/3-1-2.png
 
 #### Stored
 
-<3-2-1>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/3-2-1.png
 
 ```html
 <script>window.location.href="/hacked_users.php";</script>
 ```
 
-<3-2-2>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/3-2-2.png
 
 ---
 
 ### Reto 4 — Insecure Direct Object References (IDOR)
 
-<4>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/4.png
 
 El sistema redirige a archivos PDF cuyos nombres están codificados en hexadecimal.
 
-<4-1>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/4-1.png
 
 ```bash
 # Decodificar
@@ -99,13 +99,13 @@ echo -n "confidential" | xxd -p
 636f6e666964656e7469616c
 ```
 
-<4-4>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/4-4.png
 
 ---
 
 ### Reto 5 — File Inclusion / Source Disclosure
 
-<5>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/5.png
 
 El parámetro `fname` permite cargar archivos arbitrarios:
 
@@ -121,18 +121,18 @@ Modificando:
 
 se accede a archivos internos.
 
-<5-1-2>
-<5-1-1>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/5-1-2.png
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/5-1-1.png
 
 ---
 
 ### Reto 6 — Lógica insegura
 
-<6>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/6.png
 
 La aplicación valida los descuentos del lado del cliente, permitiendo descubrir un código especial analizando el HTML/JS.
 
-<6-1>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/6-1.png
 
 ---
 
@@ -144,18 +144,18 @@ La aplicación valida los descuentos del lado del cliente, permitiendo descubrir
 
 ### Reto 8 — CSRF
 
-<8>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/8.png
 
 La aplicación no implementa tokens CSRF.
 
-<8-2>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/8-2.png
 
 ```html
 <img src="http://172.17.0.3/update_email.php?new_email=user1@evil.com&user=user1&Update=Save">
 ```
 
-<8-6>
-<8-7>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/8-6.png
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/8-7.png
 
 **Nota:** También puede ejecutarse directamente desde el navegador.
 
@@ -163,14 +163,14 @@ La aplicación no implementa tokens CSRF.
 
 ### Reto 9 — Bypass de autenticación
 
-<9>
-<9-2>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/9.png
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/9-2.png
 
 ```
 fm.php?u=humphrey
 ```
 
-<9-3>
+https://github.com/0d1n-oss/WriteUps/blob/main/Security%20Ninjas/images/9-3.png
 
 ---
 
