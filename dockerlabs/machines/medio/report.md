@@ -3,6 +3,7 @@
 - OS: Linux
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/report/banner.png)
 
+---
 
 ## Reconocimiento
 
@@ -22,6 +23,8 @@ La pagina web cuenta con un aspecto gubernamental, teniendo apartados de noticia
 
 `Nota`
 Esta maquina tiene varias vulnerabilidades a explotar, use solo una "ruta" para resolverla, pero aun asi documentare las demas vulnerabilidades que encontre.
+
+---
 
 ## Vulnerabilidades
 
@@ -48,6 +51,8 @@ El servidor web posee un apartado de login para acceder a sus sistema, este es u
 Tan comun y corriente que contenia credenciales ....fragiles, pudiendo hacer un ataque de fuerza bruta y descubriendo un usuario y clave validos para acceder.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/report/5.png)
 
+---
+
 Ya habiendo desglosado las vulnerabilidades solo faltaria acceder al sistema para proseguir con la explotacion.
 Habiendo comprometido el panel de login se puede acceder a un area que nos permite subir un archivo, aunque solo un archivo de imagen.
 Usando la reverse shell de pentest monkey (y modificando la ip y puertos dentro de el archivo) se logro subir un backdoor en php.
@@ -65,6 +70,8 @@ nc -lvp 443
 ```
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/report/6-4.png)
 
+---
+
 ## Explotacion.
 
 Estando dentro de la maquina se puede corroborar que el usuario es "www-data"
@@ -75,8 +82,10 @@ creando un entorno de trabajo para poder ver informacion sobre los logs.
 ```
 # Creacion de la variable
 export HOME=/var/www/html/uploads
+
 # Agregar el directorio seguro
 git config --global --add safe.directory /var/www/html/desarrollo/.git
+
 # Acceder a los logs
 git logs
 ```
@@ -91,6 +100,8 @@ Siendo el usuario adm solo faltario encontrar algo que lleve hacia el usuario ro
 Tras un rato de revisar cosas se encontro una variable que resaltaba entre las demas, conteniendo un mensaje que parecia ser hexadecimal.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/report/9.png)
 Tras convertir esto a texto (si era hexadecimal) da la clave "dockerlabs4u"
+
+---
 
 # Pickle
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/report/pickle.png)
