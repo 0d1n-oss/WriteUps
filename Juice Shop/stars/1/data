@@ -1,0 +1,159 @@
+# Bonus Payload
+## Use the bonus payload `<iframe ...>` in the DOM XSS challenge.
+
+Este reto consiste en una inyección de código que permite crear una ventana que reproduce contenido externo.
+
+Se personalizó el payload para mostrar una imagen tipo *rickroll* dentro de la página.
+
+### Pasos
+
+- Descargar la imagen del rickroll.
+- Crear un archivo HTML:
+
+```html
+<html>
+  <body>
+    <img src="/rick.jpeg" />
+  </body>
+</html>
+````
+
+* Levantar un servidor HTTP simple con Python:
+
+```bash
+python3 -m http.server
+```
+
+* Inyectar el siguiente código en el campo vulnerable:
+
+```html
+<iframe width="100%" height="100" scrolling="no" frameborder="no"
+src="http://172.17.0.3:8000/rick.html"></iframe>
+```
+
+
+# Bully Chatbot
+
+## Receive a coupon code from the support chatbot.
+
+* Dirigirse a `http://172.17.0.3:3000/#/chatbot`
+* Repetir la palabra `coupon?` hasta que el bot entregue un cupón de descuento.
+
+# Confidential Document
+
+## Access a confidential document.
+
+Este reto consiste en encontrar un archivo confidencial.
+
+Se realizó fuzzing con Gobuster y se encontró una carpeta llamada `ftp` que contiene varios archivos.
+El archivo relevante es `acquisitions`, el cual completa el reto.
+
+# Error Handling
+## Provoke an error that is neither very gracefully nor consistently handled.
+
+* Ir al panel de login.
+* Introducir una comilla (`'`) en el campo `Email` y cualquier valor en `Password`.
+* El sistema genera un error no manejado correctamente, completando el reto.
+# Expose Metrics
+## Find the endpoint that serves usage data to be scraped by a popular monitoring system.
+
+La descripcion habla sobre un popular sistema de monitoreo, y una url que referencia a prometheus.
+Investigando sobre este se encontraron rutas usadas en este servicio, creando un mini diccionario con esta informacion.
+
+* Creacion de diccionario
+```txt
+data
+data-agent
+metrics
+query
+prefix
+```
+
+* Se uso gobuster para hacer fuzzing con estas rutas, encontrando la ruta metrics/ y completando asi el desafio.
+
+`nota`
+`Gobuster da un error con un codigo de respuesta, hay que excluir el codigo para poder proceder con el escaneo, y que asi gobuster ignore este codigo`
+
+# Mass Dispel
+## Close multiple "Challenge solved"-notifications in one go.
+
+Este desafio solo consiste en cerrar varias notificaciones a la vez.
+Desde el navegador (en este caso firefox) solo hay que pulsar `shift` y borrar una notificacion, las otras se borraran con esta.
+
+# Missing Encoding
+
+## Retrieve the photo of Bjoern's cat in "melee combat-mode".
+
+Una imagen no cargaba correctamente en la galería.
+
+Al inspeccionar la URL se detectó el carácter `#`, el cual fue codificado en URL encoding, permitiendo acceder correctamente a la imagen.
+
+
+# Outdated Allowlist
+
+## Let us redirect you to one of our outdated crypto currency addresses.
+
+Se investigaron subdominios usando JSFinder:
+
+```bash
+python3 JSFinder.py --url http://172.17.0.3:3000
+```
+
+Luego se accedió manualmente a la URL encontrada:
+
+```
+http://172.17.0.3:3000/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm
+```
+
+
+# Privacy Policy
+
+## Read our privacy policy.
+
+Solo hay que acceder a:
+
+`http://172.17.0.3:3000/#/privacy-security/privacy-policy`
+
+# Repetitive Registration
+
+## Follow the DRY principle while registering a user.
+
+* Crear un usuario en `/register`.
+* Interceptar la petición con Burp Suite.
+* Modificar los campos `password` y `repeat password` para que sean distintos.
+
+# Score Board
+
+## Find the carefully hidden 'Score Board' page.
+
+* Abrir las herramientas de desarrollador.
+* Buscar `score-board` en `main.js`.
+* Acceder a la ruta `/score-board`.
+# Web3 Sandbox
+## Find an accidentally deployed code sandbox for writing smart contracts on the fly.
+
+Buscando en el codigo de el archivo `main.js` se puede encontrar una ruta llamada `web3-sandbox`
+
+* Acceder desde el navegador a `herramientas de desarrollador` > `debuger`
+* Buscar en el main.js la palabra `web3-sandbox`
+* Ir a la ruta http://172.17.0.3:3000/#/web3-sandbox
+
+# DOM XSS
+
+## Perform a DOM XSS attack.
+
+Se inyectó el siguiente payload en un campo vulnerable:
+
+```html
+<iframe src="javascript:alert(`xss`)"></iframe>
+```
+
+
+# Zero Stars
+
+## Give a devastating zero-star feedback.
+
+* Acceder a `/contact`.
+* Enviar una review.
+* Interceptar la petición y cambiar `rating` a `0`.
+
