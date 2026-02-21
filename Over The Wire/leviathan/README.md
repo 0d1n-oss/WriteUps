@@ -2,9 +2,9 @@
 
 ---
 
-#Aviso
-#Este writeup es creado para apoyar en la resolucion de los desafios de el leviathan.
-#Recomiendo que se intenten resolver los desafios y solo si se necesita ayuda se consulte esta guia.
+`Nota`
+`Este writeup es creado para apoyar en la resolucion de los desafios de el leviathan.`
+`Recomiendo que se intenten resolver los desafios y solo si se necesita ayuda se consulte esta guia.`
 
 ---
 
