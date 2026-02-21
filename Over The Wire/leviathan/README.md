@@ -1,24 +1,11 @@
-# OverTheWire – Leviathan Writeups
-
-Wargame: Leviathan
-
----
+# Wargame: Leviathan  
 
 
 ---
-
-
-# leviathan
-
-  
-
-Leviathan
-
-\#Aviso#
-
-\#Este writeup es creado para apoyar en la resolucion de los desafios de el leviathan.#
-
-\#Recomiendo que se intenten resolver los desafios y solo si se necesita ayuda se consulte esta guia.#
+#Aviso
+#Este writeup es creado para apoyar en la resolucion de los desafios de el leviathan.#
+#Recomiendo que se intenten resolver los desafios y solo si se necesita ayuda se consulte esta guia.#
+---
 
 Leviathan es uno de los wargames disponibles, diseñado para personas que ya tienen conocimientos básicos de Linux y quieren practicar escalación de privilegios, análisis de binarios simples y conceptos básicos de seguridad.
 
@@ -45,10 +32,6 @@ Cada nivel de Leviathan incluye un archivo ejecutable ubicado en el home del usu
 
 # level0
 
-  
-
-Nivel 0
-
 El nivel 0 no cuenta con mucha informacion intencionalmente (al igual que los demas) como describe la pagina.
 
 ![](images/4-1.png)
@@ -65,11 +48,7 @@ Se intento buscar algun servicio web instalado en la maquina para levantar un ho
 
 ---
 
-# level1
-
-  
-
-Level 1
+# level 1
 
 Dentro de la maquina se puede ver un binario ejecutable con permisos de el usuario leviathan1.
 
@@ -85,11 +64,7 @@ Usando la clave “sex” en el programa check se pudo acceder a la terminal, te
 
 ---
 
-# level2
-
-  
-
-Level 2
+# level 2
 
 listando los directorios se encontro un binario llamado printfile, al intentar ejecutar este solicita un archivo.
 
@@ -107,11 +82,7 @@ pudiendo con printfile visualizar la clave de la proxima maquina.
 
 ---
 
-# level3
-
-  
-
-Level 3
+# level 3
 
 Dentro de el tercer desafio se encontro un binario llamado level3, pidiendo este una clave secreta.
 
@@ -127,11 +98,7 @@ Gracias a ltrace se encontro una palabra la cual funciono como clave, pudiendo v
 
 ---
 
-# level4
-
-  
-
-Level 4
+# level 4
 
 Dentro de este desafio se pudo encontrar un binario llamado bin dentro de la carpeta .trash.
 
@@ -145,11 +112,7 @@ Desencriptando el codigo se obtuvieron dos resultados interesantes, convirtiendo
 
 ---
 
-# level5
-
-  
-
-Level 5
+# level 5
 
 Dentro de este desafio se encontro el binario leviathan5, el cualal ejecutarse solicita un archivo log.
 
@@ -165,11 +128,7 @@ Ya con el archivo necesario creado se ejecuto el binario proporcionando la clave
 
 ---
 
-# level6
-
-  
-
-Level 6
+# level 6
 
 Dentro de esta maquina se encontro el binario leviathan6, el cual para ejecutarse necesita un codigo de 4 digitos.
 
@@ -204,16 +163,14 @@ Luego de ejecutar el archivo de fuerza bruta este empieza a probar los codigos, 
 
 # level7
 
-  
-
-Level 7
-
 El Desafio 7 solo contiene un archivo de texto.
 
 Este es un agradecimiento por completar los desafios, pidiendo el favor de no publicar informacion de estos para no arruinar la experiencia de los jugadores.
 
-\#Volviendo a recalcar que este registro es solo para ayuda, recomiendo que se empieze a explorar los desafios, y solo al quedarse atorados soliciten la informacion#
-
-\#Dicho esto espero no solo hayas copiado y pegado comandos....👀pequeño script kiddie.#
-
 ![](images/12-1.png)
+
+---
+
+#Volviendo a recalcar que este registro es solo para ayuda, recomiendo que se empieze a explorar los desafios, y solo al quedarse atorados soliciten la informacion#
+
+#Dicho esto espero no solo hayas copiado y pegado comandos....👀pequeño script kiddie.
