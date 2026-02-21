@@ -1,27 +1,24 @@
 # Wargame: Leviathan  
 
-
 ---
+
 #Aviso
-#Este writeup es creado para apoyar en la resolucion de los desafios de el leviathan.#
-#Recomiendo que se intenten resolver los desafios y solo si se necesita ayuda se consulte esta guia.#
+#Este writeup es creado para apoyar en la resolucion de los desafios de el leviathan.
+#Recomiendo que se intenten resolver los desafios y solo si se necesita ayuda se consulte esta guia.
+
 ---
 
-Leviathan es uno de los wargames disponibles, diseñado para personas que ya tienen conocimientos básicos de Linux y quieren practicar escalación de privilegios, análisis de binarios simples y conceptos básicos de seguridad.
+### Leviathan es uno de los wargames disponibles, diseñado para personas que ya tienen conocimientos básicos de Linux y quieren practicar escalación de privilegios, análisis de binarios simples y conceptos básicos de seguridad.
 
-Enfoque:
+### Enfoque:
 
 Análisis de ejecutables.
-
 Lectura de código binario simple.
-
 Explotación de programas inseguros.
-
 Uso de herramientas comunes de Linux.
 
-¿Qué tipo de retos contiene?
-
-Cada nivel de Leviathan incluye un archivo ejecutable ubicado en el home del usuario. Tu tarea es:
+### ¿Qué tipo de retos contiene?
+### Cada nivel de Leviathan incluye un archivo ejecutable ubicado en el home del usuario. Tu tarea es:
 
 -   Analizar el binario (file, strings, ltrace, etc.).
 -   Descubrir la vulnerabilidad (por ejemplo, ejecución de comandos, verificación de contraseñas mal implementada, permisos inseguros).
@@ -30,7 +27,7 @@ Cada nivel de Leviathan incluye un archivo ejecutable ubicado en el home del usu
 
 ---
 
-# level0
+## level0
 
 El nivel 0 no cuenta con mucha informacion intencionalmente (al igual que los demas) como describe la pagina.
 
@@ -48,7 +45,7 @@ Se intento buscar algun servicio web instalado en la maquina para levantar un ho
 
 ---
 
-# level 1
+## level 1
 
 Dentro de la maquina se puede ver un binario ejecutable con permisos de el usuario leviathan1.
 
@@ -64,7 +61,7 @@ Usando la clave “sex” en el programa check se pudo acceder a la terminal, te
 
 ---
 
-# level 2
+## level 2
 
 listando los directorios se encontro un binario llamado printfile, al intentar ejecutar este solicita un archivo.
 
@@ -82,7 +79,7 @@ pudiendo con printfile visualizar la clave de la proxima maquina.
 
 ---
 
-# level 3
+## level 3
 
 Dentro de el tercer desafio se encontro un binario llamado level3, pidiendo este una clave secreta.
 
@@ -98,7 +95,7 @@ Gracias a ltrace se encontro una palabra la cual funciono como clave, pudiendo v
 
 ---
 
-# level 4
+## level 4
 
 Dentro de este desafio se pudo encontrar un binario llamado bin dentro de la carpeta .trash.
 
@@ -112,7 +109,7 @@ Desencriptando el codigo se obtuvieron dos resultados interesantes, convirtiendo
 
 ---
 
-# level 5
+## level 5
 
 Dentro de este desafio se encontro el binario leviathan5, el cualal ejecutarse solicita un archivo log.
 
@@ -128,7 +125,7 @@ Ya con el archivo necesario creado se ejecuto el binario proporcionando la clave
 
 ---
 
-# level 6
+## level 6
 
 Dentro de esta maquina se encontro el binario leviathan6, el cual para ejecutarse necesita un codigo de 4 digitos.
 
@@ -161,7 +158,7 @@ Luego de ejecutar el archivo de fuerza bruta este empieza a probar los codigos, 
 
 ---
 
-# level7
+## level7
 
 El Desafio 7 solo contiene un archivo de texto.
 
