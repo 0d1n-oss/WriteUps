@@ -5,7 +5,7 @@ La inyección de comandos es un ciberataque que consiste en ejecutar comandos ar
 
 ---
 
-![2](./images/2)
+![2](../images/2)
 
 Este reto muestra un input, el cual solicita una direccion ip a la cual hacer ping, comprobando que el sistema esta ejecutando comandos.
 
