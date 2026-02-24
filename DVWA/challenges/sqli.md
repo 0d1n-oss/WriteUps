@@ -5,10 +5,10 @@ Una inyección SQL manipula una consulta SQL estándar para explotar vulnerabili
 
 ---
 
-![6-1](./images/6-1.png)
+![6-1](../images/6-1.png)
 La web muestra un input que permite ingresarc texto, pidiendo un ID de usuario, desde ahi se puede intuir que existe una base de datos que contiene usuarios, y usando un paylaod basico se puede dumpear la base de datos.
 
-![6-2](./images/6-2.png)
+![6-2](../images/6-2.png)
 Otra alternativa seria usar **sqlmap**, una herramienta que permita atacar bases de datos con bastantes funcionalidades.
 
 ``` bash
