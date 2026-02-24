@@ -5,11 +5,11 @@ Un XSS Reflejado (Reflected Cross-Site Scripting) es una vulnerabilidad de segur
 
 ---
 
-![8-1](./images/8-1.png)
+![8-1](../images/8-1.png)
 El reto presenta algo simple, un input que pide un nombre, y ya con este presenta en mensaje en la web.
 Logrando observar que la web muestra contenido, lo cual es interesante para poder ejecutar codigo.
 
-![8-2](./images/8-2.png)
+![8-2](../images/8-2.png)
 En el input se puede usar un script para (en este caso) mostrar un mensaje, usando el script para que el navegador interprete el codigo y lo ejecute.
 
 ```
