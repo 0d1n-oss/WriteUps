@@ -8,8 +8,8 @@ El XSS basado en DOM (Document Object Model) es un tipo de ataque de seguridad w
 
 ---
 
-![7-1](./images/7-1.png)
+![7-1](../images/7-1.png)
 El reto presenta una pagina con botones que facilitan el "cambiar" el lenguaje, lo importante de esto es poder manipular la url.
 
-![7-2](./images/7-2.png)
+![7-2](../images/7-2.png)
 Observando el parametro **default** para poder cambiar el idioma, cambiando el parametro y logrando ver como esto se reescribe en la pagina.
