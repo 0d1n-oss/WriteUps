@@ -5,7 +5,7 @@ Una inyección SQL manipula una consulta SQL estándar para explotar vulnerabili
 
 ---
 
-![6-2](./images/6-2.png)
+![6-2](../images/6-2.png)
 Usando  **sqlmap** se obtienen resultados utiles, logrando evadir el factor ciego de esta injeccion sql.
 
 ``` bash
