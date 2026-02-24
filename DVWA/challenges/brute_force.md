@@ -5,6 +5,6 @@ Un ataque de fuerza bruta en ciberseguridad es un método de prueba y error util
 
 ---
 
-![1](./images/1.png)
+![1](../images/1.png)
 
 Un ataque de fuerza bruta se podria hacer con hydra, usando un diccionario basico como rockyou, aunque en este caso solo se usaron parametros basicos como *admin* y *password*
