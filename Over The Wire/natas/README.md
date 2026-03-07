@@ -60,7 +60,7 @@ Dentro de el codigo se puede ver que se intenta acceder a una imagen.
 Al acceder a la ruta **files/** se puede observar el archivo de imagen, y un archivo de texto con claves y usuarios.
 El cual contiene la clave para el siguiente reto.
 
-'''
+```
 # username:password
 alice:BYNdCesZqW
 bob:jw2ueICLvT
@@ -68,8 +68,7 @@ charlie:G5vCxkVV3m
 natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
 eve:zo4mJWyNj2
 mallory:9urtcpzBmH
-
-'''
+```
 
 ![](images/natas2-2.png)
 
