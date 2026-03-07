@@ -2,7 +2,7 @@
 
 Este repositorio contiene la documentacion y soluciones del reto **Natas**, parte de la serie de desafios de seguridad web de **OverTheWire**.
 
-![](/images/natas.png)
+![](images/natas.png)
 
 
 ## Informacion
