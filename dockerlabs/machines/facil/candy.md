@@ -1,8 +1,10 @@
 # Maquina: Candy
 - Dificultad: Facil
 - OS: Linux
-#![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/candy/banner.png)
+
 ![](../../assets/images/candy/banner.png)
+
+---
 
 ## Reconocimiento.
 
@@ -38,6 +40,8 @@ Logrando acceder al dashboard ya siendo el usuario admin (/administrator).
 
 ![](../../assets/images/candy/7.png)
 
+---
+
 ## Explotacion.
 
 Ya dentro de la web (con los permisos de el usuario administrador) solo queda empezar con la explotacion.
@@ -65,6 +69,7 @@ En este caso se agrego al usuario luisillo con permisos especiales en el archivo
 
 ![](../../assets/images/candy/12.png)
 
+---
 
 ## Pickle !!
 
