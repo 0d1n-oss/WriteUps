@@ -12,15 +12,15 @@ La fase de reconocimiento inicia con un escaneo de nmap, descubriendo el puerto 
 Usando la herramienta wpscan se inicio un escaneo al servicio de wordpress, realizando varios escaneos con especificaciones.
 
 En este escaneo se logro ver una vulnerabilidad en el pie register, dentro de los plugins.
-''' bash
+``` bash
 wpscan --url http://172.17.0.3:80 -o wp_info_u.txt --enumerate p
-'''
+```
 ![](../../assets/images/talent/2.png)
 
 En  este escaneo se descubrio al usuario admin en una deteccion pasiva.
-''' bash
+``` bash
 wpscan --url http://172.17.0.3:80 -o wp_info_u.txt --enumerate u
-'''
+```
 ![](../../assets/images/talent/3.png)
 
 Usando la herramienta searchsploit se intento buscar un exploit util, en el primer escaneo con **wpscan** se pudo ver que el pie register es vulnerable.
@@ -36,13 +36,13 @@ Usando las herramientas de desarrollador de el navegador hay que crear una cooki
 ya dentro de la web (con el usuario root) hay que manipular una de las plantillas.
 Editando uno de los temas ( Tools > Theme file editor ) hay que crear una reverse shell, editando el **functions.php** con el reverse shell de [pentest monkey](https://github.com/pentestmonkey/php-reverse-shell) y modificando la ip y el puerto, se logra obtener una shell en el servidor.
 
-'''
+```
 # modo escucha usando netcat
 nc -lvp 443
 
 # modo escucha usando penelope (herramienta que hace mas facil el tratamiento de la tty y otros)
 penelope -p 443
-'''
+```
 
 ![](../../assets/images/talent/6.png)
 
