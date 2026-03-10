@@ -1,7 +1,7 @@
 # Maquina: lfi.elf
 - Dificultad: Dificil
 - OS: Linux
-- 
+
 ![](../../assets/images/lfi-elf/banner.png)
 
 ---
