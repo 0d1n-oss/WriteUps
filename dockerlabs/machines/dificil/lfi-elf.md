@@ -1,7 +1,10 @@
 # Maquina: lfi.elf
 - Dificultad: Dificil
 - OS: Linux
+- 
 ![](../../assets/images/lfi-elf/banner.png)
+
+---
 
 ## Reconocimiento
 
@@ -26,6 +29,8 @@ Encontrando el parametro **search** en php, y con el payload que se uso aqui se 
 
 Usando curl se puede visualizar mejor que payload que se uso.
 ![](../../assets/images/lfi-elf/7.png)
+
+---
 
 ## Explotacion
 
@@ -89,6 +94,8 @@ chmod u+s /bin/bash
 ```
 
 ![](../../assets/images/lfi-elf/13.png)
+
+---
 
 ## Pickle !!
 ![](../../assets/images/lfi-elf/pickle.png)
