@@ -2,7 +2,7 @@
 - Dificultad: Facil
 - OS: Linux
 
-![](../../assets/images/picklerick/banner.png)
+![](../assets/images/picklerick/banner.png)
 
 ## Resolucion
 
