@@ -2,7 +2,7 @@
 - Dificultad: Facil
 - Tecnologia: Netcat
 
-![](../assets/w1seguy/banner.png)
+![](../assets/images/w1seguy/banner.png)
 
 ---
 
@@ -13,7 +13,7 @@ El reto presenta un archivo python a descargar, este:
 - Convierte el resultado a hex
 - Envía el texto cifrado al cliente.
 
-![](../assets/w1seguy/code.png)
+![](../assets/images/w1seguy/code.png)
 
 ---
 
@@ -58,10 +58,10 @@ for c in charset:
         break
 ```
 
-![](../assets/w1seguy/1.png)
+![](../assets/images/w1seguy/1.png)
 
 Las banderas de tryhackme casi siempre inician con **THM{**, asi que ya hay 4 de 5 caracteres.
 Haciendo fuerza bruta se puede obtener la llave y la primera bandera, pudiendo ya con estas responder a la pregunta que se nos hizo y obtener la segunda bandera.
 
-![](../assets/w1seguy/2.png)
+![](../assets/images/w1seguy/2.png)
 
