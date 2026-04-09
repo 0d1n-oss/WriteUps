@@ -1,6 +1,7 @@
-# Maquina: lfi.elf
+# Maquina: Nodeclimb
 - Dificultad: Facil
 - OS: Linux
+
 ![](../../assets/images/nodeclimb/banner.png)
 
 ---
