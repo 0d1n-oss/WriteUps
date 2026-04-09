@@ -1,7 +1,10 @@
 # Maquina: Elevator
 - Dificultad: Facil
 - OS: Linux
+
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/apibase/banner.png)
+
+---
 
 ## Reconocimiento
 El reconocimiento inicia con un escaneo de nmap para analizar los puertos y servicios expuestos.
@@ -24,6 +27,8 @@ Usando el parametro clasico " 'or+1=1+--+- " desde la url para la inyeccion, log
 Teniendo estas credenciales se logro una coneccion exitosa por ssh.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/apibase/6.png)
 
+---
+
 ## Explotacion.
 
 Dentro de el sistema se tenia el control de el usuario pingu.
@@ -31,6 +36,8 @@ Este usuario en su directorio no tenia nada interesante, pero en el directorio "
 Esta contiene algunas palabras minimas legibles, dentro de ellas esta "PASS balulero" la cual hace alucion a una clave.
 Efectivamente, el usuario root tenia como clave balulero, pudiendo comprometer la maquina.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/apibase/7.png)
+
+---
 
 # Pickle rick !!!
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/apibase/pickle.png)
