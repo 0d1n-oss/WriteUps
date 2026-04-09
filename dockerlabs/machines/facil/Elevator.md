@@ -1,7 +1,10 @@
 # Maquina: Elevator
 - Dificultad: Facil
 - OS: Linux
+
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/elevator/banner.png)
+
+---
 
 ## Reconocimiento
 Se uso nmap para realizar un analisis a la maquina, explorando sus puertos y servicios abiertos.
@@ -39,6 +42,8 @@ Para la explotacion de la maquina es bastante util usar GTFOBins.
 Una pagina que contiene informacion sobre la explotacion de muchos binarios, lo cual es util para este tipo de ctfs.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/elevator/7.png)
 
+---
+
 ## Explotacion
 El inicio de la explotacion comienza buscando archivos con permisos especiales para hacer una escalada de privilegios.
 Buscando que usuarios comprometer para conseguir el acceso root.
@@ -71,6 +76,8 @@ Desde el usuario scooby se encontro el binario /usr/bin/sudo (el obvio final de 
 Esta maquina me parecio interesante, el usar la tematica de "misterio a la orden" de la serie de scooby doo me parecio creativa, logrando apelar a mi parte nostalgica.
 El escalar privilegios sobre cada usuario de el grupo fue interesante, aunque algo largo por la cantidad de miembros de el grupo.
 Con la tematica de scooby doo esperaba algun misterio como algun programa que analizar, u n bot atacando, un programa fantasma, etc...
+
+---
 
 # Pickle Rick!!!
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/elevator/pickle.png)
