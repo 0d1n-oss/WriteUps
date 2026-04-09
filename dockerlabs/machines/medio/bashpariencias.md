@@ -1,7 +1,10 @@
 # Maquina: Bashpariencias
 - Dificultad: Medio
 - OS: Linux
+
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/bashpariencias/banner.png)
+
+---
 
 ## Reconocimiento
 La face de reconocimiento se realizo con con nmap, encontrando varios puertos abiertos con sus respectivos servicios.
@@ -20,9 +23,13 @@ Teniendo las credenciales de ssh se logro acceder a la maquina, teniendo el usua
 Estando listos para proceder con la fase de explotacion.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/bashpariencias/3.png)
 
+---
+
 ## Explotacion
 Dentro de la maquina se identificaron los usuarios, teniendo una guia clara de los usuarios que comprometer en una escalada de privilegios.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/bashpariencias/4.png)
+
+---
 
 ### Rosa
 El usuario **rosa** contenia una trampa en su directorio (parece que no era mas habil de lo que parecia)
@@ -47,15 +54,19 @@ Usando el binario tree se pudieron listar las carpetas de **home/** encontrando 
 Se uso el binario **cat** para ver el contenido de este archivo, encontrando la palabra **chocolateado**
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/bashpariencias/8.png)
 
-### Carlos
+###Carlos
 Ya con la clave descubierta se accedio al usuario carlos, viendo que el binario **/usr/bin/tee** tiene permisos de root.
 El comando tee en Unix/Linux se utiliza para leer desde la entrada estándar y escribir tanto a la salida estándar como a uno o más archivos.
 Usando el binario tee se logro modificar el archivo sudoers otorgandole permisos ilimitados al usuario carlos, logrando desde la terminal de este acceder a la consola de el usuario root.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/bashpariencias/9.png)
 
+---
+
 ## Conclusion
 La maquina fue entretenida, el estilo classico de vulnerar una web y acceder por ssh estuvo bien, aunque me hizo gracia la inclucion de el usuario rosa.
 La escalada de privilegios no es complicada, y a sinceridad creo que esta maquina deberia catalogarse como facil, Ya que no presenta desafios muy complejos.
+
+---
 
 # Picle rick!!
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/bashpariencias/pickle.png)
