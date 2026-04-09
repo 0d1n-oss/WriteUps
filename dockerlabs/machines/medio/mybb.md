@@ -1,7 +1,10 @@
 # Maquina: Database
 - Dificultad: Medio
 - OS: Linux
+
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/mybb/banner.png)
+
+---
 
 ## Reconocimiento
 Se inicio con un escaneo de nmap para identificar puertos abiertos y sus servicios.
