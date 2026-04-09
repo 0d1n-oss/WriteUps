@@ -1,7 +1,10 @@
 # Maquina: Database
 - Dificultad: Medio
 - OS: Linux
+
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/database/banner.png)
+
+---
 
 ## Reconocimiento
 La face de reconocimiento se realizo con con nmap, encontrando varios puertos abiertos con sus respectivos servicios.
@@ -51,6 +54,8 @@ Antes de acceder por ssh se creo una mini lista con tres nombres, justo los que 
 Logrando acceder con el usuario augustus.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/database/7.png)
 
+---
+
 ## Explotacion.
 Dentro de la maquina somos el usuario augustus, desde este se pudo ver que hay otros dos usuarios.
 Se encontro un binario (/usr/bin/java) con permisos de el usuario dylan, se intento proceder con la escalada de privilegios desde esta via, pero no dio frutos.
@@ -61,9 +66,13 @@ Despues de investigar algunos binarios se encontraron algunos ejemplares con per
 pudiendo saltarnos los demas usuarios y obteniendo el acceso absoluto desde el usuario august
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/database/9.png)
 
+---
+
 ## Conclusion
 Esta maquina resulto interesante, algo basica, pero curiosa.
 La fase de explotacion me dio complicaciones, aunque logre resolver la escalada de privilegios usando otro binario con permisos.
+
+---
 
 # Pickle rick!!!
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/database/pickle.png)
