@@ -1,7 +1,10 @@
 # Maquina: Vulnvault
 - Dificultad: Facil
 - OS: Linux
+
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/vulnvault/banner.png)
+
+---
 
 ## Reconocimiento.
 Se inicio con un escaneo de nmap, descubriendo dos puertos que contienen el servicio ssh en el puerto 22 y otro en el puerto 80 con una web de apache.
@@ -22,6 +25,9 @@ Explorando el directorio se descubrio un directorio **.ssh** y viendo dentro de 
 
 Copiando esta clave y usandola desde nuestra maquina se pudo conseguir acceder a la maquina victima, usando el usuario samara.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/vulnvault/5.png)
+
+---
+
 ## Explotacion.
 
 Dentro de la maquina como el usuario samara se intento interactuar con los archivos.
@@ -37,9 +43,13 @@ Habiendo descubierto este archivo y su funcionamiento se procedio a modificarlo,
 Pudiendo asi establecer una coneccion desde otra terminal siendo ya el usuario root.
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/vulnvault/7.png)
 
+---
+
 ## Conclusion.
 La maquina es facil, es entretenida y util para practicar command injection.
 El tener que buscar entre los procesos de el sistema y encontrar un archivo oculto y modificarlo para alterar su funcionamiento fue muy interesante.
+
+---
 
 # Pickle rick!!!
 ![](https://github.com/0d1n-oss/WriteUps/blob/main/dockerlabs/assets/images/vulnvault/pickle.png)
