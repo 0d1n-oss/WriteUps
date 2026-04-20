@@ -1,6 +1,7 @@
 # Maquina: SoupeDecode 01
 - Dificultad: Facil
 - OS: Windows
+- Tipo: CTF
 
 ![](../../assets/images/soupedecode01/banner.png)
 
