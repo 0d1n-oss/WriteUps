@@ -2,7 +2,7 @@
 - Dificultad: Facil
 - OS: Windows
 
-![](../../assets/images/soupedecode/banner.png)
+![](../../assets/images/soupedecode01/banner.png)
 
 ---
 
