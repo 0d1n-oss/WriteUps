@@ -76,4 +76,6 @@ Pudiendo acceder a una terminal siendo root.
 
 ---
 
+## Pickle Rick!!!
+
 ![](../../assets/images/workconnect/pickle.png)
