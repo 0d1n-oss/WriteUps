@@ -26,7 +26,7 @@ Este es un dashboard de **fastapi**, el cual contiene los tipos de peticiones qu
 
 Explorando rapidamente la pagina **/login** se puede ver que esta solicita un  dni y un password.
 
-usando curl se hizo una peticion hacia la ruta **/register**, filtrando por palabras clave.
+Usando curl se hizo una peticion hacia la ruta **/register**, filtrando por palabras clave.
 
 ![](../../assets/images/workconnect/5.png)
 
@@ -36,6 +36,7 @@ Usando el ejemplo de dni que se nos dio.
 ![](../../assets/images/workconnect/6.png)
 
 > NOTA
+
 > resulta que el ejemplo de dni dice 71902.... asi que hay que tomar en cuenta los 4 puntos como caracteres.
 
 Haciendo algunas peticiones se pueden ver dos tipos de mensajes de error, uno en donde hay un **alert-error**, un codigo que normalmente indica que ya hay un usuario registrado y no se pueden sobreescribir los datos.
