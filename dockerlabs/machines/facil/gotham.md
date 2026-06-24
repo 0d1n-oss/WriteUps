@@ -1,4 +1,4 @@
-# Maquina: Woekconnect
+# Maquina: Gotham
 - Dificultad: Facil
 - OS: Linux
 
