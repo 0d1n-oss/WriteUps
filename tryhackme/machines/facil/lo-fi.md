@@ -1,7 +1,7 @@
 # Reto: Lo-Fi
 - Dificultad: Facil
 - Tipo: Desafio
-- Tecnologia: 
+- Tecnologia: Navegador web
 
 ![](../../assets/images/lo-fi/banner.png)
 
